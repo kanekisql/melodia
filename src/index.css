@@ -1,7 +1,105 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --color-background: var(--color-background);
+  --color-background-muted: var(--color-background-muted);
+  --color-surface: var(--color-surface);
+  --color-surface-elevated: var(--color-surface-elevated);
+  --color-surface-muted: var(--color-surface-muted);
+  --color-foreground: var(--color-foreground);
+  --color-foreground-muted: var(--color-foreground-muted);
+  --color-foreground-subtle: var(--color-foreground-subtle);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-primary-muted: var(--color-primary-muted);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+  --color-secondary-muted: var(--color-secondary-muted);
+  --color-success: var(--color-success);
+  --color-success-foreground: var(--color-success-foreground);
+  --color-warning: var(--color-warning);
+  --color-warning-foreground: var(--color-warning-foreground);
+  --color-error: var(--color-error);
+  --color-error-foreground: var(--color-error-foreground);
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  --spacing-0: 0;
+  --spacing-px: 1px;
+  --spacing-0-5: 0.125rem;
+  --spacing-1: 0.25rem;
+  --spacing-1-5: 0.375rem;
+  --spacing-2: 0.5rem;
+  --spacing-2-5: 0.625rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+
+  --radius-none: 0;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  --shadow-soft: 0 16px 40px rgb(0 0 0 / 0.24);
+  --shadow-panel: 0 24px 80px rgb(0 0 0 / 0.36);
+  --shadow-focus: 0 0 0 3px rgb(125 92 255 / 0.34);
+}
+
 :root {
-  --font-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --color-background: #f8fafc;
-  --color-foreground: #111827;
+  color-scheme: dark;
+
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --color-background: oklch(13% 0.018 270);
+  --color-background-muted: oklch(17% 0.022 270);
+  --color-surface: oklch(20% 0.026 270);
+  --color-surface-elevated: oklch(24% 0.032 270);
+  --color-surface-muted: oklch(28% 0.026 270);
+
+  --color-foreground: oklch(96% 0.01 270);
+  --color-foreground-muted: oklch(78% 0.025 270);
+  --color-foreground-subtle: oklch(62% 0.03 270);
+
+  --color-border: oklch(31% 0.032 270);
+  --color-border-strong: oklch(42% 0.04 270);
+
+  --color-primary: oklch(68% 0.19 293);
+  --color-primary-foreground: oklch(98% 0.01 293);
+  --color-primary-muted: oklch(34% 0.08 293);
+
+  --color-secondary: oklch(70% 0.14 205);
+  --color-secondary-foreground: oklch(10% 0.02 205);
+  --color-secondary-muted: oklch(31% 0.07 205);
+
+  --color-success: oklch(72% 0.16 154);
+  --color-success-foreground: oklch(10% 0.02 154);
+  --color-warning: oklch(78% 0.15 78);
+  --color-warning-foreground: oklch(12% 0.02 78);
+  --color-error: oklch(66% 0.2 28);
+  --color-error-foreground: oklch(98% 0.01 28);
 
   font: 16px/1.5 var(--font-sans);
   color: var(--color-foreground);
@@ -22,6 +120,9 @@
 
 body {
   margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--color-background);
 }
 
 button,

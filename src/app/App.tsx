@@ -1,11 +1,11 @@
 import { AppProviders } from '@app/providers/AppProviders'
+import { appRouter } from '@app/routes/router'
+import { RouterProvider } from 'react-router'
 
 export function App() {
   return (
     <AppProviders>
-      <main>
-        <h1>MelodIA</h1>
-      </main>
+      <RouterProvider router={appRouter} />
     </AppProviders>
   )
 }
