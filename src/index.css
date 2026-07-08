@@ -1,9 +1,12 @@
 @import 'tailwindcss';
 
+
 @theme {
+  /* ─── FONT TOKENS ─── */
   --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
 
+  /* ─── COLOR TOKENS ─── */
   --color-background: var(--color-background);
   --color-background-muted: var(--color-background-muted);
   --color-surface: var(--color-surface);
@@ -27,6 +30,7 @@
   --color-error: var(--color-error);
   --color-error-foreground: var(--color-error-foreground);
 
+  /* ─── TEXT TOKENS ─── */
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -37,6 +41,7 @@
   --text-4xl: 2.25rem;
   --text-5xl: 3rem;
 
+  /* ─── SPACING TOKENS ─── */
   --spacing-0: 0;
   --spacing-px: 1px;
   --spacing-0-5: 0.125rem;
@@ -55,6 +60,7 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
 
+  /* ─── BORDER RADIUS TOKENS ─── */
   --radius-none: 0;
   --radius-sm: 0.25rem;
   --radius-md: 0.375rem;
@@ -62,11 +68,13 @@
   --radius-xl: 0.75rem;
   --radius-full: 9999px;
 
+  /* ─── SHADOW TOKENS ─── */
   --shadow-soft: 0 16px 40px rgb(0 0 0 / 0.24);
   --shadow-panel: 0 24px 80px rgb(0 0 0 / 0.36);
   --shadow-focus: 0 0 0 3px rgb(125 92 255 / 0.34);
 }
 
+/* ─── VARIABLES EN CRUDO CSS PARA EL NÚCLEO DOM ─── */
 :root {
   color-scheme: dark;
 
@@ -110,6 +118,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ─── RESETS ESTRUCTURALES HTML ─── */
 html {
   scroll-behavior: smooth;
 }
@@ -126,7 +135,6 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: var(--color-background);
 }
 
 button,
@@ -145,7 +153,6 @@ select {
     opacity: 0;
     transform: translateY(16px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -156,8 +163,95 @@ select {
   html {
     scroll-behavior: auto;
   }
-
   .animate-fade-up {
     animation: none;
   }
+}
+
+/* ─────────────────────────────────────────────────────────
+   🚀 HACK ULTRA-PREMIUM: CSS NATIVO PARA INTERFACES VIVAS
+   Bypasseamos por completo el motor de Tailwind v4 para evitar delays de compilación
+────────────────────────────────────────────────────────── */
+.custom-float-slow {
+  animation: pure-float-slow 4s ease-in-out infinite !important;
+}
+
+.custom-float-reverse {
+  animation: pure-float-reverse 5s ease-in-out infinite !important;
+}
+
+@keyframes pure-float-slow {
+  0%, 100% {
+    transform: translateY(0px) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-45px) scale(1.06) rotate(4deg);
+  }
+}
+
+@keyframes pure-float-reverse {
+  0%, 100% {
+    transform: translateY(0px) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translateY(35px) scale(0.94) rotate(-4deg);
+  }
+  
+}
+
+/* Animaciones para el botón musical de MelodIA */
+/* Animaciones para el botón MelodIA */
+@keyframes floatNote {
+  0% {
+    transform: translateY(15px) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-45px) scale(1.4) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+/* Fondo normal en Hover (Suave) */
+@keyframes gradientSuave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Fondo ALBOROTADO al hacer Clic (Rápido de izquierda a derecha) */
+@keyframes gradientAlborotado {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
+}
+
+@keyframes scanGenresText {
+  0%, 100% { content: "⚡ Filtrando Rock..."; }
+  15% { content: "🔥 Mezclando Salsa..."; }
+  30% { content: "✨ Sintonizando Pop..."; }
+  45% { content: "🥁 Cruzando Techno..."; }
+  60% { content: "🎸 Buscando Reggae..."; }
+  75% { content: "🎵 Armando Hip-Hop..."; }
+  90% { content: "🔮 Creando Magia..."; }
+}
+
+/* Clases optimizadas */
+.animate-suave-bg {
+  animation: gradientSuave 4s ease infinite;
+}
+
+.animate-alborotado-bg {
+  animation: gradientAlborotado 1.2s linear infinite;
+}
+
+.animate-float-particle {
+  animation: floatNote 1.2s ease-out infinite;
+}
+
+.animate-scan-text::after {
+  content: "Buscando...";
+  animation: scanGenresText 4.5s linear infinite;
 }

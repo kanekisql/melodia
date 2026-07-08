@@ -13,24 +13,30 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-20 border-b border-border/60 bg-background/70 backdrop-blur-xl">
+    // ─── FILTRO DE CRISTAL AVANZADO (Z-50 + Opacidad calibrada al 40%) ───
+    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#0a0516]/40 backdrop-blur-xl transition-all duration-300">
       <Container>
         <nav
           aria-label="Navegación principal"
           className="flex min-h-20 items-center justify-between"
         >
+          {/* LOGO EN GRADIENTE DE NEÓN ELÉCTRICO */}
           <Link
-            className="text-lg font-semibold tracking-tight text-foreground transition hover:text-secondary"
+            className="flex items-center gap-2 text-lg font-bold tracking-tight transition hover:opacity-80"
             to={APP_ROUTES.home}
           >
-            <span aria-hidden="true">🎵</span> MelodIA
+            <span aria-hidden="true" className="text-xl drop-shadow-[0_0_8px_rgba(34,211,238,0.4)]">🎵</span>
+            <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+              MelodIA
+            </span>
           </Link>
 
+          {/* MENÚ DESKTOP CON EFECTO HOVER SUAVE */}
           <div className="hidden items-center gap-8 md:flex">
             {navItems.map((item) =>
               item.href.startsWith('#') ? (
                 <a
-                  className="text-sm font-medium text-foreground-muted transition hover:text-foreground"
+                  className="text-sm font-medium text-slate-400 transition-colors duration-200 hover:text-white"
                   href={item.href}
                   key={item.label}
                 >
@@ -38,7 +44,7 @@ export function Navbar() {
                 </a>
               ) : (
                 <Link
-                  className="text-sm font-medium text-foreground-muted transition hover:text-foreground"
+                  className="text-sm font-medium text-slate-400 transition-colors duration-200 hover:text-white"
                   key={item.label}
                   to={item.href}
                 >
@@ -48,27 +54,29 @@ export function Navbar() {
             )}
           </div>
 
+          {/* BOTÓN HAMBURGUESA RETOCADO PARA ESTILO OSCURO */}
           <button
             aria-expanded={isMenuOpen}
             aria-label="Abrir menú de navegación"
-            className="grid size-11 place-items-center rounded-full border border-border bg-surface/60 text-foreground transition hover:border-border-strong md:hidden"
+            className="grid size-11 place-items-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-slate-300 transition-all hover:border-white/[0.18] hover:text-white md:hidden"
             onClick={() => setIsMenuOpen((currentValue) => !currentValue)}
             type="button"
           >
             <span className="flex flex-col gap-1.5" aria-hidden="true">
-              <span className="h-0.5 w-5 rounded-full bg-current" />
-              <span className="h-0.5 w-5 rounded-full bg-current" />
-              <span className="h-0.5 w-5 rounded-full bg-current" />
+              <span className={`h-0.5 w-5 rounded-full bg-current transition-transform duration-300 ${isMenuOpen ? 'translate-y-2 rotate-45' : ''}`} />
+              <span className={`h-0.5 w-5 rounded-full bg-current transition-opacity duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
+              <span className={`h-0.5 w-5 rounded-full bg-current transition-transform duration-300 ${isMenuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
             </span>
           </button>
         </nav>
 
+        {/* MENÚ MÓVIL ADAPTADO AL FONDO LÍQUIDO */}
         {isMenuOpen ? (
-          <div className="grid gap-2 border-t border-border/60 py-4 md:hidden">
+          <div className="grid gap-2 border-t border-white/[0.06] py-4 md:hidden">
             {navItems.map((item) =>
               item.href.startsWith('#') ? (
                 <a
-                  className="rounded-lg px-3 py-2 text-sm font-medium text-foreground-muted transition hover:bg-surface hover:text-foreground"
+                  className="rounded-xl px-4 py-2.5 text-sm font-medium text-slate-400 transition-all hover:bg-white/[0.04] hover:text-white"
                   href={item.href}
                   key={item.label}
                   onClick={() => setIsMenuOpen(false)}
@@ -77,7 +85,7 @@ export function Navbar() {
                 </a>
               ) : (
                 <Link
-                  className="rounded-lg px-3 py-2 text-sm font-medium text-foreground-muted transition hover:bg-surface hover:text-foreground"
+                  className="rounded-xl px-4 py-2.5 text-sm font-medium text-slate-400 transition-all hover:bg-white/[0.04] hover:text-white"
                   key={item.label}
                   onClick={() => setIsMenuOpen(false)}
                   to={item.href}

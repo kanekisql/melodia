@@ -1,23 +1,28 @@
+// src/app/layouts/MainLayout.tsx
 import { Footer } from '@app/layouts/Footer'
 import { Navbar } from '@app/layouts/Navbar'
 import { Outlet } from 'react-router'
+import { AmbientBackground } from '@shared/components/visual/AmbientBackground';
 
 export function MainLayout() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(124,58,237,0.26),transparent_34%),radial-gradient(circle_at_top_right,rgba(34,211,238,0.18),transparent_32%),linear-gradient(180deg,rgba(15,23,42,0.92),rgba(3,7,18,1)_58%)]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-80 bg-[linear-gradient(90deg,rgba(29,78,216,0.18),rgba(147,51,234,0.16),rgba(6,182,212,0.12))] blur-3xl"
-      />
-      <Navbar />
-      <main className="relative z-0">
-        <Outlet />
-      </main>
-      <Footer />
+    // TECH LEAD NOTE: Quitamos 'bg-background' para evitar que este contenedor
+    // tape con un color sólido a las capas de AmbientBackground.
+    <div className="relative min-h-screen overflow-hidden text-foreground">
+      
+      {/* Nuestro sistema inmersivo de capas (Base + Blobs + Noise) */}
+      <AmbientBackground />
+
+      {/* Capa de UI: Forzamos un orden relativo superior para interactuar sin problemas */}
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Navbar />
+        
+        <main className="flex-grow">
+          <Outlet />
+        </main>
+        
+        <Footer />
+      </div>
     </div>
   )
 }

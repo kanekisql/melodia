@@ -10,15 +10,18 @@ export function HomePage() {
   return (
     <>
       <Hero />
+
+      <TrackGridSection
+        title="✨ Recomendado para ti"
+        tracks={RECOMMENDED_TRACKS}
+      />
+
       <TrackGridSection
         id="explorar"
         title="🔥 Tendencias"
         tracks={TRENDING_TRACKS}
       />
-      <TrackGridSection
-        title="✨ Recomendado para ti"
-        tracks={RECOMMENDED_TRACKS}
-      />
+    
       <RecentSearches />
     </>
   )
