@@ -1,3 +1,5 @@
+import { HomePage } from '@features/home/HomePage'
+
 export function HomeRoute() {
-  return null
+  return <HomePage />
 }

@@ -110,6 +110,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 #root {
   min-height: 100vh;
 }
@@ -130,4 +134,30 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+.animate-fade-up {
+  animation: fade-up 540ms ease both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-up {
+    animation: none;
+  }
 }
