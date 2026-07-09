@@ -255,3 +255,17 @@ select {
   content: "Buscando...";
   animation: scanGenresText 4.5s linear infinite;
 }
+/*diseño vinilo cards tendencias*/
+@keyframes vinyl-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: vinyl-spin 8s linear infinite;
+}

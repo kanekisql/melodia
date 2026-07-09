@@ -57,36 +57,42 @@ export const RECOMMENDED_TRACKS: readonly MusicCardItem[] = [
     title: 'Lo-Fi Rain',
     artist: 'Quiet Terminal',
     coverGradient: 'linear-gradient(135deg, #030712, #155e75 45%, #8b5cf6)',
+    isRecommended: true, 
   },
   {
     id: 'rec-2',
     title: 'Programmer Flow',
     artist: 'Syntax Waves',
     coverGradient: 'linear-gradient(135deg, #082f49, #4c1d95 55%, #22d3ee)',
+    isRecommended: true, 
   },
   {
     id: 'rec-3',
     title: 'Calma Lunar',
     artist: 'Sofia Atlas',
     coverGradient: 'linear-gradient(135deg, #172554, #6b21a8 48%, #67e8f9)',
+    isRecommended: true, 
   },
   {
     id: 'rec-4',
     title: 'Indie at 2 AM',
     artist: 'Glass Harbor',
     coverGradient: 'linear-gradient(135deg, #18181b, #7e22ce 45%, #0284c7)',
+    isRecommended: true, 
   },
   {
     id: 'rec-5',
     title: 'Focus Bloom',
     artist: 'Mina Cloud',
     coverGradient: 'linear-gradient(135deg, #0f172a, #0e7490 50%, #a78bfa)',
+    isRecommended: true, 
   },
   {
     id: 'rec-6',
     title: 'Electric Nostalgia',
     artist: 'Retro Signal',
     coverGradient: 'linear-gradient(135deg, #1e1b4b, #7c3aed 44%, #06b6d4)',
+    isRecommended: true, 
   },
 ]
 
