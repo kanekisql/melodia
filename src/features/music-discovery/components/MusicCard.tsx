@@ -15,10 +15,10 @@ export function MusicCard({ item }: MusicCardProps) {
 
   return (
     <article 
-      className={`group relative flex overflow-hidden ${isWide 
+      className={`group relative flex overflow-visible ${isWide 
         ? 'flex-row items-center gap-6 p-5 bg-slate-900/40 border border-white/5 backdrop-blur-xl rounded-3xl hover:border-violet-500/50 hover:bg-slate-800/50' 
         : 'flex-col p-4 bg-slate-900/20 border border-white/5 backdrop-blur-md rounded-[2rem] hover:border-cyan-500/30 hover:bg-slate-900/50'} 
-      transition-all duration-500 hover:shadow-2xl`}
+      transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(0,0,0,.45)]`}
     >
       
       {/* CONTENEDOR DE IMAGEN / VINILO */}
@@ -32,16 +32,31 @@ export function MusicCard({ item }: MusicCardProps) {
     <div
       className="
         relative
-        h-[72%]
-        w-[72%]
+        h-[58%]
+        w-[58%]
+
+        sm:h-[60%]
+        sm:w-[60%]
+
+        lg:h-[64%]
+        lg:w-[64%]
+
         rounded-full
+
+        translate-x-2
+        sm:translate-x-3
+        lg:translate-x-4
+
         transition-all
         duration-700
         ease-[cubic-bezier(.22,1,.36,1)]
-        translate-x-0
-        group-hover:translate-x-16
+
+        group-hover:translate-x-7
+        sm:group-hover:translate-x-9
+        lg:group-hover:translate-x-12
+
         animate-spin-slow
-      "
+        "
     >
       {/* Disco */}
       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-zinc-900 via-black to-zinc-800 shadow-2xl">
@@ -55,6 +70,22 @@ export function MusicCard({ item }: MusicCardProps) {
 
         {/* Reflejo */}
         <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/5 to-transparent" />
+        {/* Glow cyan */}
+        <div
+          className="
+            absolute
+            inset-0
+            rounded-full
+
+            opacity-0
+            transition-opacity
+            duration-700
+
+            group-hover:opacity-100
+
+            bg-[radial-gradient(circle,rgba(34,211,238,.12),transparent_72%)]
+          "
+        />
 
         {/* Etiqueta central */}
         <div className="absolute left-1/2 top-1/2 flex h-[30%] w-[30%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-violet-500 shadow-lg">
@@ -77,7 +108,7 @@ export function MusicCard({ item }: MusicCardProps) {
     ${
       isWide
         ? 'rounded-2xl'
-        : 'rounded-2xl shadow-2xl group-hover:-translate-x-8 group-hover:scale-[0.76]'
+        : 'rounded-2xl shadow-2xl group-hover:-translate-x-4 sm:group-hover:-translate-x-5 lg:group-hover:-translate-x-6 group-hover:scale-[0.82] lg:group-hover:scale-[0.78] group-hover:-rotate-2 '
     }
   `}
   style={{ background: item.coverGradient }}
@@ -96,11 +127,40 @@ export function MusicCard({ item }: MusicCardProps) {
         {/* SELLOS Y CONTROLES (SOLO TENDENCIAS) */}
         {!isWide && (
           <>
-            <div className="absolute top-3 left-3 z-20 px-2 py-0.5 bg-black/40 backdrop-blur-md rounded-md border border-white/5 text-[7px] font-bold uppercase tracking-widest text-white/60">
-              Trending
+            <div className="absolute top-3 left-3 z-20 px-2 py-0.5 bg-black/40 backdrop-blur-md rounded-md border border-white/5 text-[8px] sm:text-[9px] font-bold uppercase tracking-widest text-white/60">
+              Top globales
             </div>
-            <div className="absolute bottom-3 right-3 z-20 w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-cyan-500/90 shadow-lg">
-              <svg className="w-3 h-3 text-white fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+            <div className="
+                  absolute
+                  bottom-3
+                  right-3
+                  z-20
+                  w-7
+                  h-7
+                  sm:w-8
+                  sm:h-8
+                  lg:w-9
+                  lg:h-9
+                  rounded-full
+                  bg-black/40
+                  backdrop-blur-md
+                  border
+                  border-white/10
+                  flex
+                  items-center
+                  justify-center
+                  opacity-0
+                  scale-50
+                  translate-y-3
+                  group-hover:opacity-100
+                  group-hover:scale-100
+                  group-hover:translate-y-0
+                  transition-all
+                  duration-500
+                  hover:bg-cyan-500/90
+                  shadow-lg
+                  ">
+              <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-4 lg:h-4 text-white fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
             </div>
           </>
         )}
@@ -117,10 +177,9 @@ export function MusicCard({ item }: MusicCardProps) {
 
       {/* TEXTO Y BOTONES */}
       <div className="flex-1 min-w-0">
-        <h3 className={`font-bold text-white transition-colors duration-300 ${isWide ? 'text-xl' : 'text-base mt-4 group-hover:text-cyan-400'}`}>
-          {item.title}
+        <h3 className={`font-bold text-white transition-all duration-500 ${isWide ? 'text-xl' : 'text-sm sm:text-base lg:text-lg mt-4 group-hover:text-cyan-300 group-hover:translate-x-1'}`}>          {item.title}
         </h3>
-        <p className="text-xs text-white/50 uppercase tracking-wider mt-1">{item.artist}</p>
+        <p className="text-[10px] sm:text-xs text-white/50 uppercase tracking-wider mt-1">{item.artist}</p>
         
         {isWide && (
           <div className="flex flex-wrap gap-2 mt-4">
