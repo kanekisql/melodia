@@ -6,15 +6,39 @@ export function RecentSearches() {
   return (
     <section className="animate-fade-up py-12 sm:py-16">
       <Container>
-        <SectionTitle actionLabel="Ver más" title="🕘 Recientes" />
-        <div className="flex flex-wrap gap-3">
+        <SectionTitle actionLabel="Ver historial" title="🕘 Recientes" />
+        <div className="flex flex-wrap gap-x-3 gap-y-4">
           {RECENT_SEARCHES.map((search) => (
             <button
-              className="rounded-full border border-border bg-surface/60 px-4 py-2 text-sm text-foreground-muted shadow-soft backdrop-blur transition duration-200 hover:-translate-y-0.5 hover:border-border-strong hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
-              key={search}
+              className="group rounded-full border border-white/5 bg-white/[0.02] hover:bg-white/[0.06] px-4 py-2 text-sm text-foreground-muted shadow-soft  transition duration-200 hover:-translate-y-0.5 hover:border-white/15 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 flex items-center gap-2"
+              key={search.text}
               type="button"
             >
-              {search}
+            <>
+             <span
+              className="
+                text-lg
+
+                transition-transform
+              duration-500
+              group-hover:rotate-6
+              group-hover:scale-110
+
+
+              "
+            >
+              {search.mood}
+            </span>
+
+            <span
+              className="
+                transition-colors
+                duration-500
+                group-hover:text-white
+              "
+            >
+              {search.text}
+            </span>            </>     
             </button>
           ))}
         </div>

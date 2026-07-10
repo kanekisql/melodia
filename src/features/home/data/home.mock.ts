@@ -97,8 +97,24 @@ export const RECOMMENDED_TRACKS: readonly MusicCardItem[] = [
 ]
 
 export const RECENT_SEARCHES = [
-  'Kevin Kaarl',
-  'Rock de los 80',
-  'Bad Bunny',
-  'Lo-fi para estudiar',
-] as const
+  {
+    mood: "😊",
+    text: "Música para levantar el ánimo",
+  },
+  {
+    mood: "😢",
+    text: "Estoy triste",
+  },
+  {
+    mood: "🏋️",
+    text: "Entrenamiento intenso",
+  },
+  {
+    mood: "🌙",
+    text: "Lo-fi para dormir",
+  },
+  {
+    mood: "🎸",
+    text: "Rock en español",
+  },
+]
